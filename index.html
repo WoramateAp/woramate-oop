@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การเปรียบเทียบการรันโค้ดในภาษา Java, C++, Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>การเปรียบเทียบการรันโค้ดในภาษา Java, C++, Python</h1>
+
+    <p>บทความนี้จะกล่าวถึงการเขียนโปรแกรมในภาษา Java, C++, และ Python โดยใช้ตัวอย่างโค้ดที่สร้างคลาส <strong>Animal</strong>, <strong>Dog</strong>, และ <strong>Cat</strong> จากนั้นเปรียบเทียบผลการรันในแต่ละภาษา</p>
+
+    <h2>1. Java</h2>
+    <p>โค้ดใน Java สร้างคลาส <code>Animal</code>, <code>Dog</code>, และ <code>Cat</code> โดยมีการ override เมธอด <code>sound()</code> ในคลาสลูก</p>
+
+    <pre><code>Animal a = new Animal();
+Dog d = new Dog();
+Cat c = new Cat();
+
+a.sound();
+d.sound();
+c.sound();
+
+System.gc();  // garbage collection (calls destructor)</code></pre>
+
+    <p><strong>ผลรัน:</strong></p>
+    <pre><code>create animal
+dog
+create animal
+cat
+create animal
+animal makes a sound
+dog barks
+cat meows
+delete animal
+delete dog
+delete animal
+delete cat
+delete animal</code></pre>
+
+    <p>ในผลลัพธ์นี้ สังเกตได้ว่าแต่ละคลาสจะพิมพ์ข้อความตาม constructor และเมธอด <code>sound()</code> ที่ถูก override เมื่อเรียกใช้งาน จากนั้นเมื่อ garbage collection ทำงาน destructors จะถูกเรียก</p>
+
+    <h2>2. C++</h2>
+    <p>โค้ดใน C++ ใช้ pointer เพื่อสร้างวัตถุของคลาส <code>Animal</code>, <code>Dog</code>, และ <code>Cat</code> และมีการใช้ <code>delete</code> เพื่อลบวัตถุ</p>
+
+    <pre><code>Animal *a = new Animal();
+Dog *d = new Dog();
+Cat *c = new Cat();
+
+a->sound();
+d->sound();
+c->sound();
+
+delete a;
+delete d;
+delete c;</code></pre>
+
+    <p><strong>ผลรัน:</strong></p>
+    <pre><code>create animal
+dog
+create animal
+cat
+create animal
+animal makes a sound
+dog barks
+cat meows
+delete animal
+delete dog
+delete animal
+delete cat
+delete animal</code></pre>
+
+    <p>การรันใน C++ ให้ผลลัพธ์คล้ายกับใน Java ต่างกันตรงที่ใช้ <code>delete</code> เพื่อลบวัตถุ ทำให้ destructors ถูกเรียกเพื่อทำความสะอาดหน่วยความจำ</p>
+
+    <h2>3. Python</h2>
+    <p>โค้ดใน Python ใช้คลาสและเมธอดเหมือนใน Java และ C++ โดยมีการใช้ <code>del</code> เพื่อลบวัตถุ</p>
+
+    <pre><code>a = Animal()
+d = Dog()
+c = Cat()
+
+a.sound()
+d.sound()
+c.sound()
+
+del a
+del d
+del c</code></pre>
+
+    <p><strong>ผลรัน:</strong></p>
+    <pre><code>create animal
+dog
+create animal
+cat
+create animal
+animal makes a sound
+dog barks
+cat meows
+delete animal
+delete dog
+delete animal
+delete cat
+delete animal</code></pre>
+
+    <p>ใน Python การลบวัตถุจะใช้ <code>del</code> ซึ่งจะทำให้เมธอด <code>__del__()</code> (destructor) ถูกเรียก ทำให้พิมพ์ข้อความเหมือนใน Java และ C++</p>
+
+    <h2>สรุปการเปรียบเทียบผลรัน</h2>
+    <p>การทำงานในทั้งสามภาษานี้มีความคล้ายคลึงกัน โดย:</p>
+    <ul>
+        <li>เมื่อสร้างวัตถุจากคลาส จะเรียก constructor ของแต่ละคลาสเพื่อพิมพ์ข้อความ</li>
+        <li>การเรียกใช้เมธอด <code>sound()</code> จะแสดงผลตามการ override ในคลาสลูก ซึ่งแสดงถึงการทำงานของ <strong>polymorphism</strong></li>
+        <li>เมื่อวัตถุถูกลบ (ด้วย garbage collection, delete หรือ del) destructors จะถูกเรียกเพื่อล้างหน่วยความจำและพิมพ์ข้อความ</li>
+    </ul>
+
+</body>
+</html>
 
