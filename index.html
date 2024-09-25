@@ -91,13 +91,12 @@ class Cat extends Animal {
 public class Main {
     public static void main(String[] args) {
         Animal a = new Animal();
-        a.sound();
-
         Dog d = new Dog();
-        d.sound();
-
         Cat c = new Cat();
-        c.sound();
+
+        a.sound();
+        d.sound();
+        c.sound();  
     }
 }
     </pre>
@@ -105,12 +104,12 @@ public class Main {
     <h3>ผลรัน:</h3>
     <pre>
 create animal
-animal makes a sound
 create animal
 dog
-dog barks
 create animal
 cat
+animal makes a sound
+dog barks
 cat meows
     </pre>
 
@@ -166,15 +165,15 @@ public:
 
 int main() {
     Animal* a = new Animal();
+    Dog* d = new Dog();
+    Cat* c = new Cat();
+
     a->sound();
-    delete a;
-
-    Animal* d = new Dog();
     d->sound();
-    delete d;
-
-    Animal* c = new Cat();
     c->sound();
+
+    delete a;
+    delete d;
     delete c;
 
     return 0;
@@ -184,16 +183,16 @@ int main() {
     <h3>ผลรัน:</h3>
     <pre>
 create animal
-animal makes a sound
-delete animal
 create animal
 dog
-dog barks
-delete dog
-delete animal
 create animal
 cat
+animal makes a sound
+dog barks
 cat meows
+delete animal
+delete dog
+delete animal
 delete cat
 delete animal
     </pre>
@@ -201,61 +200,69 @@ delete animal
     <h2>3. Python</h2>
     <pre>
 class Animal:
+    # Constructor
     def __init__(self):
         print("create animal")
 
-    def sound(self):
-        print("animal makes a sound")
-
+    # Destructor
     def __del__(self):
         print("delete animal")
 
+    # Method sound
+    def sound(self):
+        print("animal makes a sound")
 
 class Dog(Animal):
+    # Constructor
     def __init__(self):
-        super().__init__()
+        super().__init__()  # เรียกคอนสตรัคเตอร์ของ Animal
         print("dog")
 
-    def sound(self):
-        print("dog barks")
-
+    # Destructor
     def __del__(self):
         print("delete dog")
 
+    # Override sound
+    def sound(self):
+        print("dog barks")
 
 class Cat(Animal):
+    # Constructor
     def __init__(self):
-        super().__init__()
+        super().__init__()  # เรียกคอนสตรัคเตอร์ของ Animal
         print("cat")
 
-    def sound(self):
-        print("cat meows")
-
+    # Destructor
     def __del__(self):
         print("delete cat")
 
+    # Override sound
+    def sound(self):
+        print("cat meows")
 
-if __name__ == "__main__":
-    a = Animal()
-    a.sound()
+# Create objects
+a = Animal()
+d = Dog()
+c = Cat()
 
-    d = Dog()
-    d.sound()
-
-    c = Cat()
-    c.sound()
+a.sound()
+d.sound()
+c.sound()
     </pre>
 
     <h3>ผลรัน:</h3>
     <pre>
 create animal
-animal makes a sound
 create animal
 dog
-dog barks
 create animal
 cat
+animal makes a sound
+dog barks
 cat meows
+delete animal
+delete dog
+delete cat
     </pre>
 
     <h1>II. เปรียบเทียบโค้ดกับ OOP Concepts</h1>
