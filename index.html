@@ -32,11 +32,16 @@
             content: "• ";
             color: #007BFF;
         }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
-    <h1>I. โค้ดตัวอย่างใน Java, C++, Python</h1>
-    
+    <h1>I. โค้ดตัวอย่างใน Java, C++, Python พร้อมผลรัน</h1>
+
     <h2>1. Java</h2>
     <pre>
 class Animal {
@@ -95,6 +100,18 @@ public class Main {
         c.sound();
     }
 }
+    </pre>
+
+    <h3>ผลรัน:</h3>
+    <pre>
+create animal
+animal makes a sound
+create animal
+dog
+dog barks
+create animal
+cat
+cat meows
     </pre>
 
     <h2>2. C++</h2>
@@ -164,6 +181,23 @@ int main() {
 }
     </pre>
 
+    <h3>ผลรัน:</h3>
+    <pre>
+create animal
+animal makes a sound
+delete animal
+create animal
+dog
+dog barks
+delete dog
+delete animal
+create animal
+cat
+cat meows
+delete cat
+delete animal
+    </pre>
+
     <h2>3. Python</h2>
     <pre>
 class Animal:
@@ -212,73 +246,122 @@ if __name__ == "__main__":
     c.sound()
     </pre>
 
-    <h1>II. เปรียบเทียบโค้ดกับ OOP Concepts</h1>
-    <h2>1. Class</h2>
-    <p>Class คือ blueprint สำหรับการสร้าง object ตัวอย่างเช่น class <code>Animal</code>, <code>Dog</code>, และ <code>Cat</code> ในโค้ด</p>
-    
-    <h2>2. Object, Instance</h2>
-    <p>Object คือ instance ของ class เช่น <code>a</code> เป็น object ของ class <code>Animal</code>, <code>d</code> เป็น object ของ class <code>Dog</code> และ <code>c</code> เป็น object ของ class <code>Cat</code></p>
-    
-    <h2>3. Subclass, Derived Class</h2>
-    <p>Subclass คือ class ที่สืบทอดจาก superclass เช่น <code>Dog</code> และ <code>Cat</code> เป็น subclass ของ <code>Animal</code></p>
-
-    <h2>4. Message</h2>
-    <p>Message คือการส่งคำสั่งให้ object ทำงาน เช่น การเรียกใช้ <code>a.sound()</code>, <code>d.sound()</code>, และ <code>c.sound()</code></p>
-
-    <h2>5. Inheritance</h2>
-    <p>Inheritance คือการสืบทอดคุณสมบัติจาก class หนึ่งไปยังอีก class หนึ่ง ตัวอย่างเช่น <code>Dog</code> และ <code>Cat</code> สืบทอดจาก class <code>Animal</code></p>
-
-    <h2>6. Polymorphism</h2>
-    <p>Polymorphism คือความสามารถในการทำงานที่หลากหลายผ่าน method เดียวกัน เช่น method <code>sound()</code> ใน <code>Animal</code>, <code>Dog</code>, และ <code>Cat</code> ทำงานแตกต่างกัน</p>
-
-    <h1>III. Abstract Class</h1>
-    <p>Abstract class คือ class ที่ไม่สามารถสร้าง instance ได้โดยตรง และมักใช้เพื่อให้ subclass implement method ที่จำเป็น ในตัวอย่างที่ให้ไม่มี class ใดเป็น abstract class แต่สามารถสร้าง abstract class ได้ตามตัวอย่างในแต่ละภาษาด้านล่างนี้</p>
-
-    <h2>Java</h2>
+    <h3>ผลรัน:</h3>
     <pre>
-abstract class Animal {
-    Animal() {
-        System.out.println("create animal");
-    }
+create animal
+animal makes a sound
+create animal
+dog
+dog barks
+create animal
+cat
+cat meows
+    </pre>
 
-    abstract void sound(); // abstract method
+    <h1>II. เปรียบเทียบโค้ดกับ OOP Concepts</h1>
 
-    protected void finalize() {
-        System.out.println("delete animal");
+    <h2>1. Class</h2>
+    <p>Class คือโครงสร้างที่เป็น blueprint สำหรับการสร้าง object เช่นในโค้ดด้านบน มีการสร้าง class <code>Animal</code>, <code>Dog</code>, และ <code>Cat</code> เพื่อเป็นแบบแผนสำหรับ object ที่จะสร้าง</p>
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("animal makes a sound");
     }
 }
     </pre>
 
-    <h2>C++</h2>
+    <h2>2. Object, Instance</h2>
+    <p>Object คือ instance ของ class ซึ่งถูกสร้างขึ้นจาก class เช่นในโค้ด <code>Animal a = new Animal();</code> สร้าง object <code>a</code> จาก class <code>Animal</code></p>
+    <pre>
+Animal a = new Animal();
+a.sound();
+    </pre>
+
+    <h2>3. Subclass, Derived Class</h2>
+    <p>Subclass หรือ Derived Class คือคลาสที่สืบทอดจาก superclass หรือ base class ตัวอย่างเช่น <code>Dog</code> และ <code>Cat</code> เป็น subclass ของ <code>Animal</code></p>
+    <pre>
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("dog barks");
+    }
+}
+    </pre>
+
+    <h2>4. Message</h2>
+    <p>Message คือการส่งคำสั่งไปยัง object เพื่อให้ทำงานตาม method ที่กำหนด เช่น <code>a.sound()</code> ส่งคำสั่งให้ object <code>a</code> เรียกใช้ method <code>sound()</code></p>
+    <pre>
+a.sound();
+    </pre>
+
+    <h2>5. Inheritance</h2>
+    <p>Inheritance คือการสืบทอดคุณสมบัติจาก class หนึ่งไปยังอีก class หนึ่ง ตัวอย่างเช่น <code>Dog</code> และ <code>Cat</code> สืบทอดจาก <code>Animal</code> ทำให้สามารถใช้คุณสมบัติของ <code>Animal</code> ได้</p>
+    <pre>
+class Dog extends Animal {
+    Dog() {
+        System.out.println("dog");
+    }
+}
+    </pre>
+
+    <h2>6. Polymorphism</h2>
+    <p>Polymorphism คือการที่ object สามารถมี method ชื่อเดียวกันแต่ทำงานต่างกัน ตัวอย่างเช่น method <code>sound()</code> ใน <code>Dog</code>, <code>Cat</code> และ <code>Animal</code> ทำงานแตกต่างกันตาม subclass</p>
+    <pre>
+Animal a = new Dog();
+a.sound(); // จะพิมพ์ว่า "dog barks"
+    </pre>
+
+    <h1>III. Abstract Class</h1>
+    <p>Abstract class คือคลาสที่ไม่สามารถสร้างวัตถุได้โดยตรง แต่สามารถสืบทอดไปใช้ในคลาสลูกได้ เพื่อบังคับให้คลาสลูก implement เมธอดที่เป็น abstract ในคลาสแม่</p>
+    <p>หลักการสร้าง abstract class:</p>
+    <ul>
+        <li>ใน Java ใช้คำสั่ง <code>abstract</code></li>
+        <li>ใน C++ ใช้คำสั่ง <code>virtual</code> และเมธอดแบบ pure virtual function</li>
+        <li>ใน Python ใช้คำสั่ง <code>@abstractmethod</code></li>
+    </ul>
+    <p>ไม่สามารถสร้างวัตถุจาก abstract class ได้โดยตรง แต่สามารถสร้างคลาสลูกที่สืบทอดได้</p>
+
+    <h2>ตัวอย่างใน Java</h2>
+    <pre>
+abstract class Animal {
+    abstract void sound(); // abstract method
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("dog barks");
+    }
+}
+    </pre>
+
+    <h2>ตัวอย่างใน C++</h2>
     <pre>
 class Animal {
 public:
-    Animal() {
-        cout << "create animal" << endl;
-    }
-
     virtual void sound() = 0; // pure virtual function
+};
 
-    virtual ~Animal() {
-        cout << "delete animal" << endl;
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "dog barks" << endl;
     }
 };
     </pre>
 
-    <h2>Python</h2>
+    <h2>ตัวอย่างใน Python</h2>
     <pre>
 from abc import ABC, abstractmethod
 
 class Animal(ABC):
-    def __init__(self):
-        print("create animal")
-
     @abstractmethod
     def sound(self):
         pass
 
-    def __del__(self):
-        print("delete animal")
-</pre>
+class Dog(Animal):
+    def sound(self):
+        print("dog barks")
+    </pre>
+
 </body>
 </html>
